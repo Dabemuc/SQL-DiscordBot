@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+    bot:
+        build:
+          context: bot
+          dockerfile: Dockerfile
+        networks:
+            - internal
+        volumes:
+           - ./bot:/usr/src/bot
+    bot-mysql:
+        build: 
+          context: db
+          dockerfile: Dockerfile
+        #ports:       #Uncomment to expose db to localhost:3306
+            #- '3306:3306'
+        networks:
+            - internal
+networks:
+  internal:
+    driver: bridge
