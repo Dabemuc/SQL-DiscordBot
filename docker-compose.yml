@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+    bot-mysql:
+        build: 
+          context: db
+          dockerfile: Dockerfile
+        ports:       #Uncomment to expose db to localhost:3307
+            - '3307:3306'
+        networks:
+            - internal
     bot:
         build:
           context: bot
@@ -9,14 +17,6 @@ services:
             - internal
         volumes:
            - ./bot:/usr/src/bot
-    bot-mysql:
-        build: 
-          context: db
-          dockerfile: Dockerfile
-        #ports:       #Uncomment to expose db to localhost:3306
-            #- '3306:3306'
-        networks:
-            - internal
 networks:
   internal:
     driver: bridge

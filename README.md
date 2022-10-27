@@ -1,0 +1,1 @@
+A Discord bot that can execute sql queries

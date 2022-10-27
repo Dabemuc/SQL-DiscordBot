@@ -10,4 +10,5 @@ RUN apt update
 
 
 RUN python3 -m pip install -U discord.py
+RUN python3 -m pip install mariadb
 RUN python3 /usr/src/bot/bot.py
